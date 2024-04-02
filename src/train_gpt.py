@@ -94,7 +94,8 @@ def train_gpt(train_data_loader, num_epochs=3, model_name_or_path='gpt2', output
 
 
 # Instantiate your Dataset
-data_path = f"{ROOT}/data/test_data.txt"
+data_path = os.path.join(os.path.dirname(__file__), '..', 'share', 'ros2_gpt', 'data')
+model_path = os.path.join(os.path.dirname(__file__), '..', 'share', 'ros2_gpt', 'models')
 tokenizer = GPT2Tokenizer.from_pretrained("gpt2")
 max_length = 512
 

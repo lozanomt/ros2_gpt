@@ -31,4 +31,12 @@ install(PROGRAMS
   src/gpt_input_node.py
   DESTINATION lib/${PROJECT_NAME}
 )
+
+# Install data and models folders
+install(DIRECTORY
+  data
+  models
+  DESTINATION share/${PROJECT_NAME}
+)
+
 ament_package()
