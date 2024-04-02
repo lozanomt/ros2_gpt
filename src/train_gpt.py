@@ -123,4 +123,4 @@ train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, co
 num_epochs = 50
 
 # Example usage:
-train_gpt(train_loader, num_epochs=num_epochs)
+train_gpt(train_loader, num_epochs=num_epochs, output_dir=model_path)
