@@ -24,7 +24,7 @@ include_directories(include)
 #   DESTINATION lib/${PROJECT_NAME}
 # )
 # # Install Python modules
-ament_python_install_package(src)
+ament_python_install_package(include)
 # Install Python executables
 install(PROGRAMS
   src/train_gpt.py
