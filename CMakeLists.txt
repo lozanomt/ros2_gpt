@@ -27,8 +27,8 @@ include_directories(include)
 ament_python_install_package(${PROJECT_NAME})
 # Install Python executables
 install(PROGRAMS
-  scripts/train_gpt.py
-  scripts/gpt_input_node.py
+  src/train_gpt.py
+  src/gpt_input_node.py
   DESTINATION lib/${PROJECT_NAME}
 )
 ament_package()
