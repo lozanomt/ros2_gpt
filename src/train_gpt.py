@@ -96,7 +96,7 @@ def train_gpt(train_data_loader, num_epochs=3, model_name_or_path='gpt2', output
 # Instantiate your Dataset
 print(os.getcwd())
 print(ROOT)
-data_path = "data/test_data.txt"
+data_path = f"{ROOT}/data/test_data.txt"
 tokenizer = GPT2Tokenizer.from_pretrained("gpt2")
 max_length = 512
 
