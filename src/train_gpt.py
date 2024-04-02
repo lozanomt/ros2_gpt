@@ -1,6 +1,14 @@
 #!/usr/bin/env python3
 
 import os
+import sys
+from pathlib import Path
+
+FILE = Path(__file__).resolve()
+ROOT = FILE.parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.append(str(ROOT))
+
 import torch
 from transformers import GPT2LMHeadModel, GPT2Tokenizer
 from torch.utils.data import DataLoader, Dataset
@@ -87,6 +95,7 @@ def train_gpt(train_data_loader, num_epochs=3, model_name_or_path='gpt2', output
 
 # Instantiate your Dataset
 print(os.getcwd())
+print(ROOT)
 data_path = "data/test_data.txt"
 tokenizer = GPT2Tokenizer.from_pretrained("gpt2")
 max_length = 512
