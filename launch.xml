@@ -1,0 +1,10 @@
+<launch>
+    <!-- Launch input_publisher node -->
+    <node pkg="ros2_gpt" exec="input_publisher" name="input_publisher_node" output="screen"/>
+
+    <!-- Launch gpt_inference_node.py -->
+    <node pkg="ros2_gpt" exec="gpt_inference_node.py" name="gpt_interface_node" output="screen"/>
+
+    <!-- Launch output_subscriber node -->
+    <node pkg="ros2_gpt" exec="output_subscriber" name="output_subscriber_node" output="screen"/>
+</launch>

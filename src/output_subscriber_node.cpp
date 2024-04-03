@@ -7,7 +7,7 @@ public:
     SubscriberNode() : Node("subscriber_node")
     {
         subscription_ = this->create_subscription<std_msgs::msg::String>(
-            "message_bus",
+            "gpt_inference_output",
             10,
             std::bind(&SubscriberNode::topicCallback, this, std::placeholders::_1));
     }

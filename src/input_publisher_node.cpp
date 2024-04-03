@@ -9,7 +9,7 @@ class PublisherNode : public rclcpp::Node
 public:
     PublisherNode() : Node("publisher_node")
     {
-        publisher_ = this->create_publisher<std_msgs::msg::String>("message_bus", 10);
+        publisher_ = this->create_publisher<std_msgs::msg::String>("gpt_inference_input", 10);
 
         promptUserInput();
     }

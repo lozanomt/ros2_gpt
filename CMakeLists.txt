@@ -37,6 +37,7 @@ ament_python_install_package(include)
 # Install Python executables
 install(PROGRAMS
   src/train_gpt.py
+  src/gpt_inference_node.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
@@ -45,6 +46,12 @@ install(DIRECTORY
   data
   models
   DESTINATION share/${PROJECT_NAME}
+)
+
+# Install launch files
+install(FILES
+  launch.xml
+  DESTINATION share/${PROJECT_NAME}/
 )
 
 ament_package()
