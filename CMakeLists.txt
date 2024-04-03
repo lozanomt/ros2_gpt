@@ -17,13 +17,17 @@ find_package(std_msgs REQUIRED)
 # Include Cpp "include" directory
 include_directories(include)
 
-# Create Cpp executable
-add_executable(input_publisher src/Input_publisher_node.cpp)
+# Create Cpp executable for each node
+add_executable(input_publisher src/input_publisher_node.cpp)
 ament_target_dependencies(input_publisher rclcpp std_msgs)
+
+add_executable(output_subscriber src/output_subscriber_node.cpp)
+ament_target_dependencies(output_subscriber rclcpp std_msgs)
 
 # Install Cpp executables
 install(TARGETS
   input_publisher
+  output_subscriber
   DESTINATION lib/${PROJECT_NAME}
 )
 
@@ -33,7 +37,6 @@ ament_python_install_package(include)
 # Install Python executables
 install(PROGRAMS
   src/train_gpt.py
-  src/gpt_input_node.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
