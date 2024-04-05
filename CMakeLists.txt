@@ -36,8 +36,9 @@ ament_python_install_package(include)
 
 # Install Python executables
 install(PROGRAMS
-  src/train_gpt.py
+  src/gpt_trainer_node.py
   src/gpt_inference_node.py
+  src/wikipedia_downloader.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
