@@ -8,12 +8,14 @@ endif()
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
+
 # Find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(ament_cmake_python REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(rclpy REQUIRED)
 find_package(std_msgs REQUIRED)
+
 # Include Cpp "include" directory
 include_directories(include)
 
@@ -32,13 +34,12 @@ install(TARGETS
 )
 
 # Install Python modules
-ament_python_install_package(include)
+ament_python_install_package(${PROJECT_NAME})
 
 # Install Python executables
 install(PROGRAMS
-  src/gpt_trainer_node.py
-  src/gpt_inference_node.py
-  src/wikipedia_downloader.py
+  scripts/data_acquisition.py
+  scripts/gpt_node.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
@@ -54,5 +55,11 @@ install(FILES
   launch.xml
   DESTINATION share/${PROJECT_NAME}/
 )
+
+ament_export_dependencies(ament_cmake)
+ament_export_dependencies(ament_cmake_python)
+ament_export_dependencies(rclcpp)
+ament_export_dependencies(rclpy)
+ament_export_dependencies(std_msgs)
 
 ament_package()

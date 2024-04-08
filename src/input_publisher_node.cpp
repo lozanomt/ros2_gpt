@@ -7,9 +7,9 @@ using namespace std::chrono_literals;
 class PublisherNode : public rclcpp::Node
 {
 public:
-    PublisherNode() : Node("publisher_node")
+    PublisherNode() : Node("input_publisher")
     {
-        publisher_ = this->create_publisher<std_msgs::msg::String>("gpt_inference_input", 10);
+        publisher_ = this->create_publisher<std_msgs::msg::String>("inference_input", 10);
 
         promptUserInput();
     }

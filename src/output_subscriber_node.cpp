@@ -1,31 +1,23 @@
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
+#include <iostream>
+
 
 class SubscriberNode : public rclcpp::Node
 {
 public:
-    SubscriberNode() : Node("subscriber_node")
+    SubscriberNode() : Node("output_subscriber")
     {
         subscription_inference_ = this->create_subscription<std_msgs::msg::String>(
-            "gpt_inference_output",
+            "gpt_response",
             10,
-            std::bind(&SubscriberNode::inferenceCallback, this, std::placeholders::_1));
-
-        subscription_results_ = this->create_subscription<std_msgs::msg::String>(
-            "gpt_results_output",
-            10,
-            std::bind(&SubscriberNode::resultsCallback, this, std::placeholders::_1));
+            std::bind(&SubscriberNode::Callback, this, std::placeholders::_1));
     }
 
 private:
-    void inferenceCallback(const std_msgs::msg::String::SharedPtr msg)
+    void Callback(const std_msgs::msg::String::SharedPtr msg)
     {
         RCLCPP_INFO(this->get_logger(), "Inference Output: %s", msg->data.c_str());
-    }
-
-    void resultsCallback(const std_msgs::msg::String::SharedPtr msg)
-    {
-        RCLCPP_INFO(this->get_logger(), "Results Output: %s", msg->data.c_str());
     }
 
     rclcpp::Subscription<std_msgs::msg::String>::SharedPtr subscription_inference_;
